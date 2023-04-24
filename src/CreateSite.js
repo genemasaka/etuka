@@ -21,7 +21,7 @@ function CreateSite() {
   async function generateHtmlMarkup() {
 
   setIsLoading(true);
-
+  console.log(process.env.REACT_APP_OPENAI_API_KEY)
   const configuration = new Configuration({
     apiKey: `${process.env.REACT_APP_OPENAI_API_KEY}`,
   });
@@ -45,6 +45,7 @@ function CreateSite() {
   copyright with the ${brandName}. The page should use ${font} as the main font.The page should scroll smmothly and be styled in bootstrap. Do not return any explanation to the result, just return the markup` 
 
   console.log(prompt)
+  
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
