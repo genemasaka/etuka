@@ -4,7 +4,7 @@ import NavBar  from './NavBar.js';
 import Home from './Home.js';
 import CreateSite from './CreateSite.js';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { Analytics } from '@vercel/analytics/react'
 function App() {
 
   return (
@@ -22,7 +22,7 @@ function App() {
     <Route path="/create" element={<CreateSite />} />
     </Routes>
     </div>
-    
+    <Analytics />;
     </Router>
  );
   
