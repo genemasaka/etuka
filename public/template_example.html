@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>fleee</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background-color: #13424C;
+      font-family: Helvetica;
+    }
+    .navbar {
+      padding: 5px;
+      background-color: #218490;
+    }
+    .navbar a {
+      font-size: 15px;
+    }
+    .card-grid {
+      margin-top: 50px;
+    }
+    .card {
+      background-color: #218490;
+    }
+    .card:hover {
+      margin-bottom: 50px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      transform: scale(1.1);
+    }
+    .btn {
+      background-color: #AE7C54;
+      color: white;
+    }
+    .footer {
+      background-color: #218490;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm">
+    <a class="navbar-brand" href="#">fleee</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#homeModal">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#addProductModal">Add Product</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#blogModal">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+        <div class="dropdown-menu">
+          <div id="cartItems"></div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#connectWalletModal">Connect Wallet</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="row card-grid">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Good 1</h4>
+            <p class="card-text">Some text about the good.</p>
+            <button class="btn" onclick="addToCart('Good 1')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Good 2</h4>
+            <p class="card-text">Some text about the good.</p>
+            <button class="btn" onclick="addToCart('Good 2')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Good 3</h4>
+            <p class="card-text">Some text about the good.</p>
+            <button class="btn" onclick="addToCart('Good 3')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Good 4</h4>
+            <p class="card-text">Some text about the good.</p>
+            <button class="btn" onclick="addToCart('Good 4')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Good 5</h4>
+            <p class="card-text">Some text about the good.</p>
+            <button class="btn" onclick="addToCart('Good 5')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Good 6</h4>
+            <p class="card-text">Some text about the good.</p>
+            <button class="btn" onclick="addToCart('Good 6')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Good 7</h4>
+            <p class="card-text">Some text about the good.</p>
+            <button class="btn" onclick="addToCart('Good 7')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Good 8</h4>
+            <p class="card-text">Some text about the good.</p>
+            <button class="btn" onclick="addToCart('Good 8')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Good 9</h4>
+            <p class="card-text">Some text about the good.</p>
+            <button class="btn" onclick="addToCart('Good 9')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Copyright &copy; fleee</span>
+    </div>
+  </footer>
+  <!-- Home Modal -->
+  <div class="modal fade" id="homeModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Home</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          Welcome to fleee!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add Product Modal -->
+  <div class="modal fade" id="addProductModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Product</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          Add a product to fleee.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Blog Modal -->
+  <div class="modal fade" id="blogModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Blog</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          Read our blog.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- About Modal -->
+  <div class="modal fade" id="aboutModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">About</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          Learn more about fleee.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Connect Wallet Modal -->
+  <div class="modal fade" id="connectWalletModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Connect Wallet</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          Connect your wallet to fleee.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    let cartItems = [];
+    function addToCart(item) {
+      cartItems.push(item);
+      renderCartItems();
+    }
+    function renderCartItems() {
+      let cartItemsHtml = '';
+      cartItems.forEach(item => {
+        cartItemsHtml += `<div>${item}</div>`;
+      });
+      document.getElementById('cartItems').innerHTML = cartItemsHtml;
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+                 

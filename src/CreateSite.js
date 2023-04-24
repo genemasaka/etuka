@@ -16,13 +16,14 @@ function CreateSite() {
   const [storeType, setStoreType] = useState("Goods");
   const [brandName, setBrandName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = process.env.OPENAI_API_KEY;
+
 
   async function generateHtmlMarkup() {
 
   setIsLoading(true);
+
   const configuration = new Configuration({
-    apiKey: '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',
+    apiKey: `${process.env.REACT_APP_OPENAI_API_KEY}`,
   });
 
   delete configuration.baseOptions.headers['User-Agent'];
@@ -68,14 +69,18 @@ function CreateSite() {
   return (
   <>
   {isLoading ? <Loading /> : null}
-    <div className="container mt-5 p-0 m-0" >
-    <div className="row p-0">
-      <div className="col-md-4 p-0" style={{'width': '250px'}}>
-        <div className="d-flex flex-column bd-highlight mb-3">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12">
-                <form style={{'width': '50%', 'margin-left': '15px',}}>
+        <div className="container-fluid" style={{'margin-left': '0px', 'marginRight': '0px',}}>
+          <div className="row">
+          <div className="col-md-9">
+          <iframe
+          title="HTML Preview"
+          srcDoc={htmlMarkup}
+          style={{ height: "100vh", border: "none", }}
+          className=" ml-2 mr-2 rounded w-100"
+        />
+        </div>
+        <div className="col-md-3" style={{'backgroundColor':'#F9F6EE'}}>
+         <form>
 
                   <div class="form-group mb-2" >
                     <label>Colors</label>
@@ -114,22 +119,10 @@ function CreateSite() {
                   </div>
                 </form>
                 <button style={{'margin-left': '15px',}} class="btn btn-primary mt-2" onClick={handleSubmit}>Submit</button>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-8 float-right p-0">
-        <iframe
-          title="HTML Preview"
-          srcDoc={htmlMarkup}
-          style={{ height: "100vh", border: "none", width: "100vw", 'margin-right': '0px', }}
-          className=" ml-2 mr-2 rounded"
-        />
-      </div>
-    </div>
-  </div>
-</>
+            </div> 
+  </>
  );
 }
 
