@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const { Configuration, OpenAIApi } = require("openai");
 
 function Loading() {
-  return <div>Creating your template. Please wait...</div>;
+  return <div style={{'margin-left' : '40px'}}>Creating your template. Please wait...</div>;
 }
 
 function CreateSite() {
@@ -21,36 +21,52 @@ function CreateSite() {
   async function generateHtmlMarkup() {
 
   setIsLoading(true);
-  console.log(process.env.REACT_APP_OPENAI_API_KEY)
+
   const configuration = new Configuration({
     apiKey: `${process.env.REACT_APP_OPENAI_API_KEY}`,
   });
 
   delete configuration.baseOptions.headers['User-Agent'];
- 
+  const ethersjsCDN = 'https://cdnjs.cloudflare.com/ajax/libs/ethers/6.3.0/ethers.umd.min.js';
   const openai = new OpenAIApi(configuration);
 
-  const prompt = `Generate HTML markup for a single page e-commerce site landing page for a store called ${brandName} that sells ${storeType}. The page should have 
-  a navbar with the navbrand and the links: Home, Add product, Blog and About positioned at the far left of
-  the navbar positioned beside each other horizintally. The navbar should also have a connect wallet button(background color: ${tertiaryColor}) and a cart icon positioned at the far right of the navbar. On click of a link
-  on the navbar a modal should open that displays content with respect to the selected link. Add javascript code to the markup to make the modals functional. On click of the cart icon a 
-  dropdown menu should render which dynamically updates to showing the ${storeType} that have been ordered when a user clicks add to cart. Also include javascript code within the
-  markup that makes the cart feature functional. The cart icon should come before the connect wallet button. The navbar should have a padding of 5px,
-  have ${secondaryColor} as the background color and the links should be of fontsize 15px. The body of the page should have a 
-  background color of ${primaryColor}, and contain a card grid with cards that display the ${storeType} on offer. The card grid should have a
-  margin top of 50px. The cards should be 9 in number, spaced around and include a button 
-  with a background color of ${tertiaryColor}. The button's text should be white. 
-  On click of the button the selected product should be added to the cart. The cards' background color should be ${secondaryColor}.
-  On hover  of each card they should rise smoothly, be highlighted and have a marging bottom of 50px. The footer of the page should have a background color of ${secondaryColor} and contain
-  copyright with the ${brandName}. The page should use ${font} as the main font.The page should scroll smmothly and be styled in bootstrap. Do not return any explanation to the result, just return the markup` 
-
+  const prompt = `Generate HTML, javascript and CSS that creates a lean e-commerce store landing page called ${brandName} that sells ${storeType}.
+Embed javascript code and CSS within the HTML.
+Divide the page into header, body, and footer sections.
+Include copyright information in the footer section.
+Add a button to automatically scroll to the top of the page in the footer section.
+Use ${brandName} as the nav brand in the navbar and redirect to the landing page on click.
+Position the navbar links at the farthest left and horizontally next to each other.
+Make the navbrand and links horizontally on the same line.
+Include an 'add product' link in the navbar that renders a modal with a form to add products to the landing page.
+Include a field in the 'add products' modal to add the link of the product image.
+Add javascript to make the 'add products' modal functional and dynamically add products to the main section of the page.
+Display a modal with content relevant to a particular navbar link when clicked.
+Remove the 'href' attribute from all links.
+Position the connect wallet button at the farthest right in the navbar.
+Add javascript to get a user's metamask wallet address using ethersJS CDN and set the provider as const provider = new ethers.BrowserProvider(window.ethereum).
+Hide the connect wallet button when the address is retrieved and display it as truncated.
+Render products as a grid of cards with a margin of 30px between them.
+Include an add to cart button on each card to dynamically add a product to the cart.
+Add a cart icon to the navbar on the left of the connect wallet button.
+Display a modal with the products a user adds to the cart, the total, and a checkout button when the cart icon is clicked.
+Add javascript to make the cart feature functional and only add one instance of the product selected to the cart.
+Include a button in the cart modal to close the modal when clicked.
+Add CSS to style the page.
+Make the page responsive.
+Use ${primaryColor} as the primary color, ${secondaryColor} as the secondary color, and ${tertiaryColor} as the accent color.
+Add a rounded border radius to all the buttons.
+Do not include comments in the HTML.
+Do not explain the result.
+Return the result in one go.
+  `
   console.log(prompt)
-  
+
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
-    temperature: 0.1,
-    max_tokens: 3000,
+    temperature: 0,
+    max_tokens: 3400,
   });
   console.log(completion.data.choices[0].text)
   return completion.data.choices[0].text;
@@ -78,6 +94,7 @@ function CreateSite() {
           srcDoc={htmlMarkup}
           style={{ height: "100vh", border: "none", }}
           className=" ml-2 mr-2 rounded w-100"
+          sandbox="allow-forms allow-scripts allow-modals allow-same-origin"
         />
         </div>
         <div className="col-md-3" style={{'backgroundColor':'#F9F6EE'}}>
