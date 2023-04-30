@@ -36,15 +36,21 @@ Divide the page into header, body, and footer sections.
 Include copyright information in the footer section.
 Add a button to automatically scroll to the top of the page in the footer section.
 Use ${brandName} as the nav brand in the navbar and redirect to the landing page on click.
-Position the navbar links at the farthest left and horizontally next to each other.
-Make the navbrand and links horizontally on the same line.
+Position the navbar links: 'About' and 'Contact' at the farthest left and horizontally next to each other.
+The 'About' link should open a modal that displays information about the landing page.
+The 'Contact' link should open a modal that displays contact information for the landing page.
 Include an 'add product' link in the navbar that renders a modal with a form to add products to the landing page.
 Include a field in the 'add products' modal to add the link of the product image.
 Add javascript to make the 'add products' modal functional and dynamically add products to the main section of the page.
 Display a modal with content relevant to a particular navbar link when clicked.
+The cart modal should be the only modal with a 'checkout' button.
 Remove the 'href' attribute from all links.
+Position the navbrand and links horizontally on the same line.
 Position the connect wallet button at the farthest right in the navbar.
-Add javascript to get a user's metamask wallet address using ethersJS CDN and set the provider as const provider = new ethers.BrowserProvider(window.ethereum).
+Add javascript to get a user's metamask wallet address using ethersJS CDN and set the provider as: const provider = new ethers.BrowserProvider(window.ethereum).
+To get the user's address from a list of accounts retrieved from the provider use: 
+const accounts = provider.send("eth_requestAccounts", []);
+const userAddress = accounts[0];
 Hide the connect wallet button when the address is retrieved and display it as truncated.
 Render products as a grid of cards with a margin of 30px between them.
 Include an add to cart button on each card to dynamically add a product to the cart.
